@@ -7,17 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TryOutSeleniumGrid" />
-        <module name="TryOutAppium" />
-        <module name="cucumberjvmtestframework" />
         <module name="tryoutjackson" />
+        <module name="try-out-collection-frameworks" />
+        <module name="try-out-java-streams" />
+        <module name="cucumberjvmtestframework" />
+        <module name="TryOutAppium" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="cucumberjvmtestframework" target="1.5" />
-      <module name="practice" target="1.5" />
-      <module name="TryOutAppium" target="1.5" />
-      <module name="tryoutjackson" target="1.5" />
-      <module name="TryOutSeleniumGrid" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

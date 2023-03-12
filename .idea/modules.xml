@@ -3,11 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SingleFileForAllFilesInAFolder/SingleFileForAllFilesInAFolder.iml" filepath="$PROJECT_DIR$/SingleFileForAllFilesInAFolder/SingleFileForAllFilesInAFolder.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Try-Out-Appium/TryOutAppium.iml" filepath="$PROJECT_DIR$/Try-Out-Appium/TryOutAppium.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Try-Out-Selenium-Grid/TryOutSeleniumGrid.iml" filepath="$PROJECT_DIR$/Try-Out-Selenium-Grid/TryOutSeleniumGrid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cucumber-jvm-test-framework/cucumberjvmtestframework.iml" filepath="$PROJECT_DIR$/cucumber-jvm-test-framework/cucumberjvmtestframework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/practice.iml" filepath="$PROJECT_DIR$/practice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/try-out-jackson/tryoutjackson.iml" filepath="$PROJECT_DIR$/try-out-jackson/tryoutjackson.iml" />
     </modules>
   </component>
 </project>

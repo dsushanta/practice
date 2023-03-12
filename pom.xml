@@ -14,6 +14,9 @@
         <module>AppiumTryOut</module>
         <module>Try-Out-Appium</module>
         <module>Try-Out-Selenium-Grid</module>
+        <module>try-out-collection-frameworks</module>
+        <module>try-out-java-streams</module>
+        <module>try-out-java-streams</module>
     </modules>
 
     <dependencies>
