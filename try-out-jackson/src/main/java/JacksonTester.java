@@ -3,17 +3,22 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
 import java.io.IOException;
 
 public class JacksonTester {
 
     public static void main(String[] args) {
 
+
+        String fileName = "friends.json";
+        File databaseConfigFile = new File(System.getProperty("user.dir")+
+                "/src/main/resources/"+ fileName);
         String jsonString = "{ \"name\":\"Joey Tribbiani\", \"profession\":\"Actor\", \"age\":30 }";
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            Person one_of_the_friends = mapper.readValue(jsonString, Person.class);
+            Person one_of_the_friends = mapper.readValue(databaseConfigFile, Person.class);
             System.out.println(one_of_the_friends);
 
             Person another_one_from_friends = new Person("Chandler Bing", "IT Procurement Manager");

@@ -1,0 +1,172 @@
+/Users/admin/tmp/java/AppiumDemo/src/test/java/scenarios/AndroidSetup.java
+package scenarios;
+
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+
+public class AndroidSetup {
+    protected AndroidDriver driver;
+
+    protected void prepareAndroidForAppium() throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("appium-version", "1.0");
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("platformVersion", "5.0");
+        capabilities.setCapability("deviceName", "Nexus");
+        capabilities.setCapability("app", "/Users/nishant/Development/AppiumDemo/apps/flipkart.apk");
+        capabilities.setCapability("appPackage", "com.flipkart.android");
+        capabilities.setCapability("appActivity", "com.flipkart.android.SplashActivity");
+        driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+    }
+}
+----------------------------------------------------------------------
+/Users/admin/tmp/java/AppiumDemo/src/test/java/pages/LoginPage.java
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+public class LoginPage extends BasePage {
+    By userId = By.id("mobileNo");
+    By password = By.id("et_password");
+    By login_Button = By.id("btn_mlogin");
+    By existingUser_login = By.id("btn_mlogin");
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public LoginPage invalidLogin() {
+        waitForVisibilityOf(existingUser_login);
+        driver.findElement(existingUser_login).click();
+        driver.findElement(userId).clear();
+        driver.findElement(userId).sendKeys("someone@testvagrant.com");
+        driver.findElement(password).sendKeys("testvagrant123");
+        driver.findElement(login_Button).click();
+        Assert.assertTrue(driver.findElement(By.id("pageLevelError")).getText().equalsIgnoreCase("Account does not exist"));
+        return new LoginPage(driver);
+    }
+}
+----------------------------------------------------------------------
+/Users/admin/tmp/java/AppiumDemo/src/test/java/pages/BasePage.java
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.HashMap;
+
+/**
+ * Created by nishant on 13/09/14.
+ */
+public class BasePage {
+
+
+    protected WebDriver driver;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    protected void waitForVisibilityOf(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    protected void waitForClickabilityOf(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void scrollPageUp() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+        swipeObject.put("startX", 0.50);
+        swipeObject.put("startY", 0.95);
+        swipeObject.put("endX", 0.50);
+        swipeObject.put("endY", 0.01);
+        swipeObject.put("duration", 3.0);
+        js.executeScript("mobile: swipe", swipeObject);
+    }
+
+
+    public void swipeLeftToRight() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+        swipeObject.put("startX", 0.01);
+        swipeObject.put("startY", 0.5);
+        swipeObject.put("endX", 0.9);
+        swipeObject.put("endY", 0.6);
+        swipeObject.put("duration", 3.0);
+        js.executeScript("mobile: swipe", swipeObject);
+    }
+
+    public void swipeRightToLeft() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+        swipeObject.put("startX", 0.9);
+        swipeObject.put("startY", 0.5);
+        swipeObject.put("endX", 0.01);
+        swipeObject.put("endY", 0.5);
+        swipeObject.put("duration", 3.0);
+        js.executeScript("mobile: swipe", swipeObject);
+    }
+
+    public void swipeFirstCarouselFromRightToLeft() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+        swipeObject.put("startX", 0.9);
+        swipeObject.put("startY", 0.2);
+        swipeObject.put("endX", 0.01);
+        swipeObject.put("endY", 0.2);
+        swipeObject.put("duration", 3.0);
+        js.executeScript("mobile: swipe", swipeObject);
+    }
+
+    public void performTapAction(WebElement elementToTap) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> tapObject = new HashMap<String, Double>();
+        tapObject.put("x", (double) 360); // in pixels from left
+        tapObject.put("y", (double) 170); // in pixels from top
+        tapObject.put("element", Double.valueOf(((RemoteWebElement) elementToTap).getId()));
+        js.executeScript("mobile: tap", tapObject);
+    }
+}
+----------------------------------------------------------------------
+/Users/admin/tmp/java/AppiumDemo/src/test/java/scenarios/AppiumTest.java
+package scenarios;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import pages.LoginPage;
+
+public class AppiumTest extends AndroidSetup {
+
+    @BeforeClass
+    public void setUp() throws Exception {
+        prepareAndroidForAppium();
+    }
+
+    @AfterClass
+    public void tearDown() throws Exception {
+        driver.quit();
+    }
+
+    @Test
+    public void falseLoginTest() throws InterruptedException {
+        new LoginPage(driver).invalidLogin();
+    }
+
+}
+
+----------------------------------------------------------------------
