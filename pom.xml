@@ -11,12 +11,17 @@
     <modules>
         <module>cucumber-jvm-test-framework</module>
         <module>try-out-jackson</module>
-        <module>AppiumTryOut</module>
         <module>Try-Out-Appium</module>
         <module>Try-Out-Selenium-Grid</module>
         <module>try-out-collection-frameworks</module>
         <module>try-out-java-streams</module>
         <module>try-out-java-streams</module>
+        <module>Junit5</module>
+        <module>Try-Out-OOP</module>
+        <module>Try-out-design-patterns</module>
+        <module>Problems</module>
+        <module>try-random-stuff</module>
+        <module>Data-Structure-And-Algorithms</module>
     </modules>
 
     <dependencies>

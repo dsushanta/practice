@@ -2,15 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Problems" />
+        <module name="try-out-java-streams" />
+        <module name="Data-Structure-And-Algorithms" />
+        <module name="cucumberjvmtestframework" />
+        <module name="Try-Out-OOP" />
         <module name="TryOutSeleniumGrid" />
+        <module name="Try-out-design-patterns" />
         <module name="tryoutjackson" />
         <module name="try-out-collection-frameworks" />
-        <module name="try-out-java-streams" />
-        <module name="cucumberjvmtestframework" />
+        <module name="try-random-stuff" />
+        <module name="Junit5" />
         <module name="TryOutAppium" />
       </profile>
     </annotationProcessing>
