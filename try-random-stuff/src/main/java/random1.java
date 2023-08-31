@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class random1 {
     public static void main(String[] args) {
         var a = new String("hello");
@@ -8,5 +10,7 @@ public class random1 {
 
         System.out.println(lit1 == lit2);
         System.out.println(a == b);
+
+        var l = List.of(new String("a"),new String("a"));
     }
 }

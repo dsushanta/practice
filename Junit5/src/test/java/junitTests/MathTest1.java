@@ -15,15 +15,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import utils.*;
 
-@ExtendWith(LoggingExtension.class)
+//@ExtendWith(LoggingExtension.class)
 @DisplayName("Math Test 1")
 public class MathTest1 {
 
-    private Logger logger;
+//    private Logger logger;
 
-    public void setLogger(Logger logger) {
-        this.logger = logger;
-    }
+//    public void setLogger(Logger logger) {
+//        this.logger = logger;
+//    }
 
     @BeforeAll
     public static void beforeAllOuter() {
@@ -39,7 +39,7 @@ public class MathTest1 {
     public void test11() {
         System.out.println("Test 11");
         UtilClass.sleep(6);
-        logger.info("Test 11");
+//        logger.info("Test 11");
     }
 
     @Test
@@ -86,6 +86,11 @@ public class MathTest1 {
     @Nested
     @DisplayName("Test Math 2 features")
     class MathSubTest2 {
+
+        @BeforeAll
+        public static void beforeAllInner() {
+            System.out.println("Before all from inner 2");
+        }
         @BeforeEach
         public void beforeEachInner2() {
             System.out.println("Before each from inner 2");
@@ -109,6 +114,11 @@ public class MathTest1 {
         @AfterEach
         public void afterEachInner2() {
             System.out.println("After each from inner 2");
+        }
+
+        @AfterAll
+        public static void afterAllInner() {
+            System.out.println("After all from inner 2");
         }
     }
 

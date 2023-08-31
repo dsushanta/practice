@@ -50,6 +50,7 @@ public class Runner {
     public static void tryStreamAnyMatch(){
         var allCharacters = getCharacters();
 
+
         var anyMatch = allCharacters.stream()
                 .anyMatch(character -> character.getAge() > 28);
 

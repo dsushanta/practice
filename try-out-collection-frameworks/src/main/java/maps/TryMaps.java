@@ -91,6 +91,10 @@ public class TryMaps {
         characterMap.put("friend55555", new Character("Ross", 31, Gender.MALE));
 
         characterMap.entrySet().stream()
+                        .sorted(Map.Entry.comparingByKey())
+                                .forEach(System.out::println);
+
+        characterMap.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .forEach(System.out::println);
 

@@ -31,6 +31,11 @@ public class Streams1 {
                 .sorted();
 //                .forEach(System.out::println);
 
+        var words = List.of("how", "youu", "doing");
+        words.stream().filter(word -> !word.isEmpty()).map(word -> "Joey "+word).filter(word -> word.length() < 10)
+                .sorted(Comparator.comparing(String::length).reversed()).forEach(System.out::println);
+
+
         a.forEach(System.out::println);
 
         System.out.println("Highest number");
@@ -56,6 +61,7 @@ public class Streams1 {
         var players = List.of("Ronaldo", "messi", "hazard", "zidane");
         var players1 = Arrays.asList("Ronaldo", "messi", "hazard", "zidane");
 
+        players.stream().max(Comparator.comparing(String::length)).ifPresent(System.out::println);
         players1.stream().min(Comparator.comparing(String::length)).ifPresent(System.out::println);
 
         var arr = new int[] {2,6,7,5,1};
